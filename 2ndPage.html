@@ -5,6 +5,33 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>AB Tasty Cerification</title>
   <script type="text/javascript" src="https://try.abtasty.com/2247504501e9ca2e4473281fcbb8c8d8.js"></script>
+  <script> 
+    window.abtasty.send("transaction", { 
+      tid: "OD564", // Format: STRING, value example: "OD564" 
+      ta: "Exemple transaction", // Format: STRING, value example: "Purchase" 
+      tr: 12.44, // Format: FLOAT, value example: 15.47 
+      ts: 0, // Format: FLOAT, value example: 3.5 
+      tt: 1, // Format: FLOAT, value example: 2.60  
+      tc: "EUR", // Format: STRING, value example: "EUR"   
+      tcc: "None", // Format: STRING, value example: "Coupon" 
+      pm: "Credit Card", // Format: STRING, value example: "Paypal" 
+      sm: "Chronopost", // Format: STRING, value example: "Fedex" 
+      icn: 2 // Format: INTEGER, value example: 12 
+    }); 
+
+    if (Array.isArray(JSON.parse(localStorage.getItem('transactions'))) === true) { 
+      for (var i = 0; i < JSON.parse(localStorage.getItem('transactions')).length; i++) { 
+        window.abtasty.send("item", { 
+          "tid": "OD564", // Format: STRING, value example: "OD564" 
+          "in": "NAME", // Format: STRING, value example: "Shoe" 
+          "ip": 12.55, // Format: FLOAT, value example: 3.5 
+          "iq": 2, // Format: INTEGER, value example: 4 
+          "ic": "SKU111", // Format: STRING, value example: "SKU47" 
+          "iv": "CATEGORY" // Format: STRING, value example: "Blue" 
+        }); 
+      } 
+    } 
+  </script>
 </head>
 <body>
   <h1>Second page</h1>
