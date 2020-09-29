@@ -32,7 +32,59 @@
       } 
     } 
 
-   fetch("https://decision.flagship.io/v2/bt8f6o9k85v039namjhg/campaigns", {method: 'POST', headers: {"x-api-key": "mGubkybkKw4G9weE7ALZAaNv8DdAhWEn3Wfyhh59" }, body: JSON.stringify({visitor_id: "dpkj8t452hf0w0de"})})
+   fetch("https://decision.flagship.io/v2/bt8f6o9k85v039namjhg/campaigns", 
+     {
+      method: 'POST', 
+      headers: {"x-api-key": "mGubkybkKw4G9weE7ALZAaNv8DdAhWEn3Wfyhh59" },
+      body: JSON.stringify({visitor_id: "dpkj8t452hf0w0de"})
+     }
+   ).then(response => response.json())
+  .then(data => {
+    if (data.campaigns && data.campaigns.indexOf("btmc2q409hdg4m00llig") > -1){
+      if (!data.campaigns["btmc2q409hdg4m00llig"].variation.modifications.value.imageBonusFlag) document.querySelector('button').style.background='green';
+      
+
+      // SEND EVENT
+      fetch("https://ariane.abtasty.com", {
+	method: "POST",
+    	header: "content-type: application/json",
+  	body: JSON.stringify({
+		"cid": "btmcjec09hdg5j1b0drg",
+       		"dl": "http://saievych.dev",
+  		"ea": "newsletterSubscription",
+  		"ec": "Action Tracking",
+  		"el": "option",
+  		"ev": 1,
+  		"t": "EVENT",
+  		"vid": "dpkj8t452hf0w0de",
+  		"ds": "APP"})
+        });
+
+	// SEND TRANSACTION
+       fetch("https://ariane.abtasty.com", {
+	method: "POST",
+    	header: "content-type: application/json",
+  	body: JSON.stringify({
+		"cid": "btmcjec09hdg5j1b0drg",
+  		"icn": 12,
+ 		 "pm": "Paypal",
+ 		 "sm": "Fedex",
+ 		 "t": "TRANSACTION",
+ 		 "ta": "Purchase",
+ 		 "tc": "EUR",
+ 		 "tcc": "Coupon",
+ 		 "tid": "transaction"+Math.floor(Math.random() * Math.floor(10000)),
+  		 "tr": 15.47,
+  		 "ts": 3.5,
+ 		 "tt": 2.6,
+ 		 "vid": "dpkj8t452hf0w0de",
+ 		 "ds": "APP"
+	})
+        });
+
+      }
+    }
+  );
   </script>
 </head>
 <body>
