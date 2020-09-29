@@ -41,8 +41,8 @@
      }
    ).then(response => response.json())
   .then(data => {
-    if (data.campaigns && data.campaigns.indexOf("btmc2q409hdg4m00llig") > -1){
-      if (!data.campaigns["btmc2q409hdg4m00llig"].variation.modifications.value.imageBonusFlag) document.querySelector('button').style.background='green';
+    if (data.campaigns){
+      if (data.campaigns["btmc2q409hdg4m00llig"] && !data.campaigns["btmc2q409hdg4m00llig"].variation.modifications.value.imageBonusFlag) document.querySelector('button').style.background='green';
       
 
       // SEND EVENT
