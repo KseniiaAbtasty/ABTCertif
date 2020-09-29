@@ -6,8 +6,9 @@
   <title>AB Tasty Cerification</title>
   <script type="text/javascript" src="https://try.abtasty.com/2247504501e9ca2e4473281fcbb8c8d8.js"></script>
   <script> 
+    const tid1=Math.floor(Math.random() * Math.floor(10000));
     window.abtasty.send("transaction", { 
-      tid: "OD564", // Format: STRING, value example: "OD564" 
+      tid: "OD564"+tid1, // Format: STRING, value example: "OD564" 
       ta: "Exemple transaction", // Format: STRING, value example: "Purchase" 
       tr: 12.44, // Format: FLOAT, value example: 15.47 
       ts: 0, // Format: FLOAT, value example: 3.5 
@@ -22,7 +23,7 @@
     if (Array.isArray(JSON.parse(localStorage.getItem('transactions'))) === true) { 
       for (var i = 0; i < JSON.parse(localStorage.getItem('transactions')).length; i++) { 
         window.abtasty.send("item", { 
-          "tid": "OD564", // Format: STRING, value example: "OD564" 
+          "tid": "OD564"+tid1, // Format: STRING, value example: "OD564" 
           "in": "NAME", // Format: STRING, value example: "Shoe" 
           "ip": 12.55, // Format: FLOAT, value example: 3.5 
           "iq": 2, // Format: INTEGER, value example: 4 
